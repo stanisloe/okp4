@@ -132,7 +132,7 @@ def execute_transactions():
 
 if __name__ == '__main__':
     tx_info_array = []
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=EXECUTION_PARALLELISM) as executor:
         futures = []
         for i in range(EXECUTION_PARALLELISM):
             futures.append(executor.submit(execute_transactions))
